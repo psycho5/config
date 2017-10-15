@@ -92,9 +92,14 @@ alias pinnerrepo="cd ~/Documents/Scroll/pinnerapp"
 alias dfprepo="cd ~/Documents/Scroll/dfp-ads"
 alias canvasrepo="cd ~/Documents/Scroll/canvas"
 alias scrollapirepo="cd ~/Documents/Scroll/scrollapi && workon scrollapi"
+alias bofhrepo="cd ~/Documents/Scroll/bofh && workon bofh"
 alias coreSSHUrl="ssh scrolldev@core.scroll.team"
 alias uiSSHUrl="ssh scrolldev@ui.scroll.in"
-alias apiSSHUrl="ssh scrolldev@api.scroll.team"
+alias apiSSHUrl="ssh scrolldev@api.scroll.in"
+alias goodwebSSHUrl="ssh scrolldev@scroll.in"
+alias betaSSHUrl="ssh scrolldev@beta.scroll.in"
+alias imagebankAdminSSHUrl="ssh scrolladmin@imagebank.scroll.team"
 alias httpServer="python -m SimpleHTTPServer"
 
 fortune | cowsay
+eval $(thefuck --alias)

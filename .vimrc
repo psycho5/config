@@ -1,4 +1,5 @@
 let g:vimDir = $HOME.'/.vim'
+let g:vue_disable_pre_processors=1
 
 let s:pluginDef  = g:vimDir.'/vimconfig/pluglist.vim'
 ""let s:pluginConf = g:vimDir.'/vimconfig/plugconfig.vim'

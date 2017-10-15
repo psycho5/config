@@ -74,7 +74,7 @@ set lazyredraw
 " On file types...
 " .md files are markdown files
 autocmd BufNewFile,BufRead *.md setlocal ft=markdown
-autocmd BufRead,BufNewFile *.vue set ft=vue " .vue files
+autocmd BufRead,BufNewFile *.vue setlocal filetype=html.javascript.css " .vue files
 
 " start NERDTree on start-up and focus active window
 autocmd VimEnter * NERDTree
