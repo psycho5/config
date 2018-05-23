@@ -1,2 +1,5 @@
-# configs
-Editor and software configurations
+# Settings and configuration files
+Consists config files for:
+- Editor 
+- Software
+ 
