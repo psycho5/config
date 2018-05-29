@@ -1,10 +1,15 @@
 let g:vimDir = $HOME.'/.vim'
-let g:vue_disable_pre_processors=1
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" Temp disable python mode
+" let g:pymode=0
+let g:pymode_options_max_line_length=88
 
 let s:pluginDef  = g:vimDir.'/vimconfig/pluglist.vim'
 ""let s:pluginConf = g:vimDir.'/vimconfig/plugconfig.vim'
 
 let s:configSetting = g:vimDir.'/vimconfig/settings.vim'
+let s:functions = g:vimDir.'/vimconfig/functions.vim'
 ""let s:configMapping = g:vimDir.'/vimconfig/mapping.vim'
 
 ""let s:userConfig  = g:vimDir.'/local.vim'
@@ -17,6 +22,8 @@ exec ":source ".s:configSetting
 exec ":source ".s:pluginDef
 ""exec ":source ".s:pluginConf
 
+" Loads custom functions
+" exec ":source ".s:functions
 
 " user configuration from .vim folder
 ""if filereadable(s:userConfig)

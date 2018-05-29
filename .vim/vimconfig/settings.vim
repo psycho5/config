@@ -98,6 +98,8 @@ autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 " " for css or scss
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+"" 88 character limit for python files
+autocmd FileType python set colorcolumn=88
 
 " ---------------------- COLOURS  ----------------------
 " set the color theme to wombat256

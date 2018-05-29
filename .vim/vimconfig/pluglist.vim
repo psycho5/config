@@ -16,8 +16,11 @@ Plugin 'itchyny/lightline.vim'   "configurable statusline/tabline plugin
 Plugin 'tpope/vim-surround'      "surroundings: parentheses, brackets, quotes, XML tags, and more
 Plugin 'groenewege/vim-less'     "syntax highlighting, indenting and autocompletion for the dynamic stylesheet language LESS.
 Plugin 'maksimr/vim-jsbeautify'
-Plugin 'editorconfig/editorconfig-vim'
+Plugin 'editorconfig/editorconfig-vim' "Ability to parse .editorconfig file
 Plugin 'tpope/vim-fugitive' "Git plugin
+Plugin 'klen/python-mode' "Host of python programming plugins
+Plugin 'pangloss/vim-javascript'
+Plugin 'ambv/black' "Python code formatter
 
 " end plugin definition
 call vundle#end()            " required for vundle
