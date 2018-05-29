@@ -1,5 +1,6 @@
 # Settings and configuration files
 Consists config files for:
-- Editor 
-- Software
+1. Editor 
+  - vim
+2. Software
  
