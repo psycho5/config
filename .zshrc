@@ -1,5 +1,11 @@
+# Author: Sagar Baver (https://github.com/psycho5).
+# Personal configurations of the Z-shell.
+# Predominantly rely on oh-my-zsh framework (https://github.com/robbyrussell/oh-my-zsh).
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Mac OS X High Sierra
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -7,8 +13,9 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
 # ZSH_THEME="kennethreitz"
+ZSH_THEME=""
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -33,7 +40,7 @@ ZSH_THEME="robbyrussell"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -43,18 +50,29 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Antigen zsh plugin manager: https://github.com/zsh-users/antigen
+source /usr/local/Cellar/antigen/2.2.3/share/antigen/antigen.zsh
+
+# Antigen bundles
+export NVM_LAZY_LOAD=true
+antigen bundle lukechilds/zsh-nvm
+
+# Load the theme.
+# antigen theme robbyrussell
+
+# Tell Antigen that you're done.
+antigen apply
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git
-         zsh-nvm
-)
+plugins=(git brew)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -66,11 +84,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+else
+   export EDITOR='mvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -79,6 +97,7 @@ source $ZSH/oh-my-zsh.sh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 source "/usr/local/bin/virtualenvwrapper.sh"
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -87,7 +106,12 @@ source "/usr/local/bin/virtualenvwrapper.sh"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ls='ls -FGh'
+alias ll='ls -laFGh'
+alias lla='ls -laFGh | grep "^d" && ls -lFGah | grep "^-" && ls -lFGah | grep "^l"'
+
 alias httpServer="python -m SimpleHTTPServer"
+alias ppRepo="cd /Users/psycho/Work/Autodesk/dmg-partner-portal-server"
 
 fortune | cowsay
 eval $(thefuck --alias)
@@ -95,3 +119,30 @@ eval $(thefuck --alias)
 # Node version manager settings
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export MYSQL_HOME="/usr/local/mysql"
+export COMPOSER_HOME="~/.composer/vendor"
+export PATH="$MYSQL_HOME/bin:$PATH"
+export PATH="$COMPOSER_HOME/bin:$PATH"
+# export CLICOLOR=1
+# export LSCOLORS=ExFxBxDxCxegedabagacad
+
+#--------------------------Pure prompt--------------------------------
+# Pure prompt set as ZSH theme (https://github.com/sindresorhus/pure).
+# Important to load this after sourcing `oh-my-zsh.sh`.
+# Note: Set `ZSH_THEME=""` for pure prompt to take over.
+autoload -U promptinit; promptinit
+
+# optionally define some options
+PURE_CMD_MAX_EXEC_TIME=7
+
+prompt pure
+#---------------------------------------------------------------------
+
+#--------------------------ZSH syntax highlight----------------------------
+# ZSH command line syntax highlighting
+# Run `brew install zsh-syntax-highlighting` first
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#--------------------------------------------------------------------------

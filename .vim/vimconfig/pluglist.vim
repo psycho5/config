@@ -10,6 +10,7 @@ Plugin 'gmarik/Vundle.vim'
 "start plugin defintion
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdtree'     "explore your filesystem and to open files and directories
+Plugin 'Xuyuanp/nerdtree-git-plugin' "Show git status of files and containing directories within NerdTree
 Plugin 'vim-scripts/L9'
 Plugin 'vim-scripts/FuzzyFinder'
 Plugin 'itchyny/lightline.vim'   "configurable statusline/tabline plugin         

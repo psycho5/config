@@ -5,8 +5,8 @@ Consists config files for:
 2. Software
   - terminator
   - oh-my-zsh
+  - iterm2
 3. Browser
   - Vimium plugin
 
 Useful to swiftly set up dev box on a new machine
- 
