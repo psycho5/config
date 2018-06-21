@@ -12,8 +12,8 @@ set number
 
 " make vim not to detect file types but load plugins for them
 filetype off
-filetype plugin on
-filetype indent on
+filetype plugin off
+filetype indent off
 
 " set omnicomplete on
 " use <C-x><C-o> for completion in insert mode

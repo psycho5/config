@@ -20,7 +20,7 @@ Plugin 'maksimr/vim-jsbeautify'
 Plugin 'editorconfig/editorconfig-vim' "Ability to parse .editorconfig file
 Plugin 'tpope/vim-fugitive' "Git plugin
 Plugin 'klen/python-mode' "Host of python programming plugins
-Plugin 'pangloss/vim-javascript'
+Plugin 'pangloss/vim-javascript' "JavaScript syntax and indent support
 Plugin 'ambv/black' "Python code formatter
 
 " end plugin definition

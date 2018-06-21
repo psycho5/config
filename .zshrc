@@ -2,10 +2,15 @@
 # Personal configurations of the Z-shell.
 # Predominantly rely on oh-my-zsh framework (https://github.com/robbyrussell/oh-my-zsh).
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-# Mac OS X High Sierra
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+#-----------------------------------
+# Mac OS X High Sierra PATH variable
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home"
+export MYSQL_HOME="/usr/local/mysql"
+export COMPOSER_HOME="~/.composer/vendor"
+export GRADLE_HOME="/usr/local/bin/gradle"
+
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$JAVA_HOME:$MYSQL_HOME/bin:$COMPOSER_HOME/bin:$GRADLE_HOME:$PATH
+#-----------------------------------
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -83,12 +88,14 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
-else
-   export EDITOR='mvim'
-fi
+#-Preferred editor for local and remote sessions-
+export EDITOR='vim'
+# if [[ -n $SSH_CONNECTION ]]; then
+   # export EDITOR='vim'
+# else
+   # export EDITOR='vim'
+# fi
+#------------------------------------------------
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -98,34 +105,50 @@ fi
 
 source "/usr/local/bin/virtualenvwrapper.sh"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+#-----------------------------------------------------
+# Custom aliases defined within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls='ls -FGh'
 alias ll='ls -laFGh'
 alias lla='ls -laFGh | grep "^d" && ls -lFGah | grep "^-" && ls -lFGah | grep "^l"'
 
-alias httpServer="python -m SimpleHTTPServer"
-alias ppRepo="cd /Users/psycho/Work/Autodesk/dmg-partner-portal-server"
+ALIASFILE="$ZSH_CUSTOM/.aliasesrc"
+source $ALIASFILE
+#-----------------------------------------------------
 
 fortune | cowsay
 eval $(thefuck --alias)
 
-# Node version manager settings
+#---------------- Node version manager settings---------------------
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export MYSQL_HOME="/usr/local/mysql"
-export COMPOSER_HOME="~/.composer/vendor"
-export PATH="$MYSQL_HOME/bin:$PATH"
-export PATH="$COMPOSER_HOME/bin:$PATH"
+# This auto loads nvm version in a dir with .nvmrc
+# autoload -U add-zsh-hook
+# load-nvmrc() {
+#   local node_version="$(nvm version)"
+#   local nvmrc_path="$(nvm_find_nvmrc)"
+# 
+#   if [ -n "$nvmrc_path" ]; then
+#     local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+# 
+#     if [ "$nvmrc_node_version" = "N/A" ]; then
+#       nvm install
+#     elif [ "$nvmrc_node_version" != "$node_version" ]; then
+#       nvm use
+#     fi
+#   elif [ "$node_version" != "$(nvm version default)" ]; then
+#     echo "Reverting to nvm default version"
+#     nvm use default
+#   fi
+# }
+# add-zsh-hook chpwd load-nvmrc
+# load-nvmrc
+#-------------------------------------------------------------------
+
 # export CLICOLOR=1
 # export LSCOLORS=ExFxBxDxCxegedabagacad
 

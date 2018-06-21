@@ -1,9 +1,13 @@
+"------------Configurations on g-----------------------
 let g:vimDir = $HOME.'/.vim'
+
+let g:javascript_plugin_jsdoc = 1
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
-" Temp disable python mode
+" Temporarily disable python mode
 " let g:pymode=0
 let g:pymode_options_max_line_length=88
+"------------------------------------------------------
 
 let s:pluginDef  = g:vimDir.'/vimconfig/pluglist.vim'
 ""let s:pluginConf = g:vimDir.'/vimconfig/plugconfig.vim'
