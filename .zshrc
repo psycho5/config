@@ -103,8 +103,14 @@ export EDITOR='vim'
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-source "/usr/local/bin/virtualenvwrapper.sh"
-
+#---------------------------------------------------------------
+# Set variables for Python's virtualenvwrapper
+# http://virtualenvwrapper.readthedocs.io/en/latest/install.html
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper_lazy.sh
+#---------------------------------------------------------------
+#
 #-----------------------------------------------------
 # Custom aliases defined within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
@@ -116,7 +122,11 @@ ALIASFILE="$ZSH_CUSTOM/.aliasesrc"
 source $ALIASFILE
 #-----------------------------------------------------
 
+#----------------------------------------------------
+# Run cowsay and fortune formulae on terminal startup
 fortune | cowsay
+#----------------------------------------------------
+
 eval $(thefuck --alias)
 
 #---------------- Node version manager settings---------------------
