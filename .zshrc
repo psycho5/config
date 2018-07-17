@@ -127,7 +127,10 @@ source $ALIASFILE
 fortune | cowsay
 #----------------------------------------------------
 
+#--------------
+# Alias thefuck 
 eval $(thefuck --alias)
+#--------------
 
 #---------------- Node version manager settings---------------------
 export NVM_DIR="$HOME/.nvm"
