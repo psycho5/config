@@ -1,6 +1,5 @@
 " Configurations on g.
 let g:vimDir = $HOME.'/.vim'
-let g:javascript_plugin_jsdoc = 1 " Todo: find an alternative to this.
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Temporarily disable python mode
