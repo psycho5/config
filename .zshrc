@@ -1,21 +1,19 @@
 # Author: Sagar Baver (https://github.com/psycho5).
-# Personal configurations of the Z-shell.
+# My configurations of the Z-shell.
 # Predominantly rely on oh-my-zsh framework (https://github.com/robbyrussell/oh-my-zsh).
 
-#-----------------------------------
-# Mac OS X High Sierra PATH variable
+# PATH variables
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+
+# Other variables
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home"
 export MYSQL_HOME="/usr/local/mysql"
 export COMPOSER_HOME="~/.composer/vendor"
 export GRADLE_HOME="/usr/local/bin/gradle"
-
 # AWS environment variables
 export AWS_SDK_LOAD_CONFIG=1
 
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$JAVA_HOME:$MYSQL_HOME/bin:$COMPOSER_HOME/bin:$GRADLE_HOME:$PATH
-#-----------------------------------
-
-# Path to your oh-my-zsh installation.
+# Path to oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -59,16 +57,38 @@ COMPLETION_WAITING_DOTS="true"
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="yyyy-mm-dd"
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+setopt HIST_BEEP                 # Beep when accessing nonexistent history.
+
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Antigen zsh plugin manager: https://github.com/zsh-users/antigen
-source /usr/local/Cellar/antigen/2.2.3/share/antigen/antigen.zsh
+# On MacOS X
+# source /usr/local/Cellar/antigen/2.2.3/share/antigen/antigen.zsh
+# On Debian - Ubuntu
+source /usr/share/zsh-antigen/antigen.zsh
 
 # Antigen bundles
 export NVM_LAZY_LOAD=true
 antigen bundle lukechilds/zsh-nvm
+# On Debian - Ubuntu only.
+antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
 # antigen theme robbyrussell
@@ -80,7 +100,7 @@ antigen apply
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew)
+plugins=(git brew history)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -98,7 +118,6 @@ export EDITOR='vim'
 # else
    # export EDITOR='vim'
 # fi
-#------------------------------------------------
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -106,36 +125,31 @@ export EDITOR='vim'
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-#---------------------------------------------------------------
 # Set variables for Python's virtualenvwrapper
 # http://virtualenvwrapper.readthedocs.io/en/latest/install.html
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-source /usr/local/bin/virtualenvwrapper_lazy.sh
-#---------------------------------------------------------------
+# export WORKON_HOME=$HOME/.virtualenvs
+# export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper_lazy.sh
 #
-#-----------------------------------------------------
 # Custom aliases defined within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-alias ls='ls -FGh'
-alias ll='ls -laFGh'
-alias lla='ls -laFGh | grep "^d" && ls -lFGah | grep "^-" && ls -lFGah | grep "^l"'
+# alias ls='ls -FGh'
+# alias ll='ls -laFGh'
+# alias lla='ls -laFGh | grep "^d" && ls -lFGah | grep "^-" && ls -lFGah | grep "^l"'
+#
+# On Debian-Ubuntu switch vim with vim.gnome
+alias vim=vim.gnome
 
 ALIASFILE="$ZSH_CUSTOM/.aliasesrc"
 source $ALIASFILE
-#-----------------------------------------------------
 
-#----------------------------------------------------
 # Run cowsay and fortune formulae on terminal startup
 fortune | cowsay
-#----------------------------------------------------
 
-#--------------
 # Alias thefuck 
 eval $(thefuck --alias)
-#--------------
 
-#---------------- Node version manager settings---------------------
+# Node version manager config
 export NVM_DIR="$HOME/.nvm"
 # This loads nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -163,12 +177,10 @@ export NVM_DIR="$HOME/.nvm"
 # }
 # add-zsh-hook chpwd load-nvmrc
 # load-nvmrc
-#-------------------------------------------------------------------
 
 # export CLICOLOR=1
 # export LSCOLORS=ExFxBxDxCxegedabagacad
 
-#--------------------------Pure prompt--------------------------------
 # Pure prompt set as ZSH theme (https://github.com/sindresorhus/pure).
 # Important to load this after sourcing `oh-my-zsh.sh`.
 # Note: Set `ZSH_THEME=""` for pure prompt to take over.
@@ -178,10 +190,10 @@ autoload -U promptinit; promptinit
 PURE_CMD_MAX_EXEC_TIME=7
 
 prompt pure
-#---------------------------------------------------------------------
 
-#--------------------------ZSH syntax highlight----------------------------
 # ZSH command line syntax highlighting
 # Run `brew install zsh-syntax-highlighting` first
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#--------------------------------------------------------------------------
+# On MacOS X
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# On Debian - Ubuntu
+source /home/sagarb/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
