@@ -1,4 +1,7 @@
-" ---------------------- PLUGIN CONFIGURATION ----------------------
+" These are all the list of plugins I use.
+" Vundle is my goto plugin manager.
+" To know more about what each plugin does, prepend 'https://github.com/' to any of the plugins in the list below.
+
 " initiate Vundle
 let &runtimepath.=',$HOME/.vim/bundle/Vundle.vim'
 call vundle#begin()
@@ -8,6 +11,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 "start plugin defintion
+"
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdtree' "explore your filesystem and to open files and directories.
 Plugin 'Xuyuanp/nerdtree-git-plugin' "Show git status of files and containing directories within NerdTree.
@@ -24,6 +28,7 @@ Plugin 'pangloss/vim-javascript' "JavaScript syntax highlight and indent support
 Plugin 'mxw/vim-jsx' "Syntax highlight for JSX
 " Plugin 'ambv/black' "Python code formatter
 Plugin 'w0rp/ale' "Asynchronous lint engine (Can use eslint, prettier, etc. as linters).
+Plugin 'tpope/vim-abolish' "Search for, substitute, and abbreviate multiple variants of a word
 
 " end plugin definition
 call vundle#end()            " required for vundle

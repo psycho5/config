@@ -9,6 +9,9 @@ export MYSQL_HOME="/usr/local/mysql"
 export COMPOSER_HOME="~/.composer/vendor"
 export GRADLE_HOME="/usr/local/bin/gradle"
 
+# AWS environment variables
+export AWS_SDK_LOAD_CONFIG=1
+
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$JAVA_HOME:$MYSQL_HOME/bin:$COMPOSER_HOME/bin:$GRADLE_HOME:$PATH
 #-----------------------------------
 
