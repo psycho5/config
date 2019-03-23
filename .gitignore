@@ -1,2 +1,4 @@
+.DS_Store
+
 " ignore vundle plugin installation files
 .vim/bundle  

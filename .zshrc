@@ -1,15 +1,16 @@
-# Author: Sagar Baver (https://github.com/psycho5).
+# Author: Sagar Baver (https://github.com/sagarbaver).
 # My configurations of the Z-shell.
 # Predominantly rely on oh-my-zsh framework (https://github.com/robbyrussell/oh-my-zsh).
 
 # PATH variables
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$(yarn global bin):~/.local/bin:$PATH
 
 # Other variables
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home"
 export MYSQL_HOME="/usr/local/mysql"
 export COMPOSER_HOME="~/.composer/vendor"
 export GRADLE_HOME="/usr/local/bin/gradle"
+
 # AWS environment variables
 export AWS_SDK_LOAD_CONFIG=1
 
@@ -19,9 +20,33 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-# ZSH_THEME="kennethreitz"
-ZSH_THEME=""
+ZSH_THEME="powerlevel9k/powerlevel9k"
+
+# powerlevel9k theme customizations
+# https://github.com/bhilburn/powerlevel9k#prompt-customization
+POWERLEVEL9K_MODE='nerdfont-complete'
+
+# p9k segments display settings
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user context dir vcs dir_writable)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time root_indicator node_version background_jobs ram disk_usage)
+
+# p9k prompt display settings
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{blue}"$'\u256D\u2500'"%F{white}" # ╭─
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{blue}"$'\u2570\uf460'"%F{white}" # ╰
+
+# p9k context segment settings
+DEFAULT_USER=`whoami`
+
+# p9k node_version segment settings
+POWERLEVEL9K_NODE_VERSION_FOREGROUND="black"
+
+# Customizations for zsh-autosuggestions plugin
+# https://github.com/zsh-users/zsh-autosuggestions#configuration
+ZSH_AUTOSUGGEST_STRATEGY="history"
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -78,45 +103,25 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Antigen zsh plugin manager: https://github.com/zsh-users/antigen
-# On MacOS X
-# source /usr/local/Cellar/antigen/2.2.3/share/antigen/antigen.zsh
-# On Debian - Ubuntu
-source /usr/share/zsh-antigen/antigen.zsh
-
-# Antigen bundles
-export NVM_LAZY_LOAD=true
-antigen bundle lukechilds/zsh-nvm
-# On Debian - Ubuntu only.
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-# Load the theme.
-# antigen theme robbyrussell
-
-# Tell Antigen that you're done.
-antigen apply
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew history)
+plugins=(git brew history zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
-#-Preferred editor for local and remote sessions-
+# Preferred editor for local and remote sessions
 export EDITOR='vim'
 # if [[ -n $SSH_CONNECTION ]]; then
-   # export EDITOR='vim'
+#   export EDITOR='vim'
 # else
-   # export EDITOR='vim'
+#   export EDITOR='mvim'
 # fi
 
 # Compilation flags
@@ -130,70 +135,32 @@ export EDITOR='vim'
 # export WORKON_HOME=$HOME/.virtualenvs
 # export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 # source /usr/local/bin/virtualenvwrapper_lazy.sh
-#
+
+
 # Custom aliases defined within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-# alias ls='ls -FGh'
-# alias ll='ls -laFGh'
-# alias lla='ls -laFGh | grep "^d" && ls -lFGah | grep "^-" && ls -lFGah | grep "^l"'
-#
-# On Debian-Ubuntu switch vim with vim.gnome
-alias vim=vim.gnome
-
 ALIASFILE="$ZSH_CUSTOM/.aliasesrc"
 source $ALIASFILE
 
-# Run cowsay and fortune formulae on terminal startup
-fortune | cowsay
+# Runs cowsay and fortune formulae on terminal startup
+# fortune | cowsay
+# eval $(thefuck --alias)
 
-# Alias thefuck 
-eval $(thefuck --alias)
-
-# Node version manager config
+# NVM(Node Version Manager) config
+# https://github.com/creationix/nvm#git-install
 export NVM_DIR="$HOME/.nvm"
 # This loads nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 # This loads nvm bash_completion
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# This auto loads nvm version in a dir with .nvmrc
-# autoload -U add-zsh-hook
-# load-nvmrc() {
-#   local node_version="$(nvm version)"
-#   local nvmrc_path="$(nvm_find_nvmrc)"
-# 
-#   if [ -n "$nvmrc_path" ]; then
-#     local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-# 
-#     if [ "$nvmrc_node_version" = "N/A" ]; then
-#       nvm install
-#     elif [ "$nvmrc_node_version" != "$node_version" ]; then
-#       nvm use
-#     fi
-#   elif [ "$node_version" != "$(nvm version default)" ]; then
-#     echo "Reverting to nvm default version"
-#     nvm use default
-#   fi
-# }
-# add-zsh-hook chpwd load-nvmrc
-# load-nvmrc
-
-# export CLICOLOR=1
-# export LSCOLORS=ExFxBxDxCxegedabagacad
-
 # Pure prompt set as ZSH theme (https://github.com/sindresorhus/pure).
 # Important to load this after sourcing `oh-my-zsh.sh`.
 # Note: Set `ZSH_THEME=""` for pure prompt to take over.
-autoload -U promptinit; promptinit
+# autoload -U promptinit; promptinit
 
 # optionally define some options
-PURE_CMD_MAX_EXEC_TIME=7
+# PURE_CMD_MAX_EXEC_TIME=7
 
-prompt pure
-
-# ZSH command line syntax highlighting
-# Run `brew install zsh-syntax-highlighting` first
-# On MacOS X
-# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# On Debian - Ubuntu
-source /home/sagarb/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
+# prompt pure
+source "$HOME/.zshrc-`uname`"
