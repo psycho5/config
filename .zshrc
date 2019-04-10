@@ -42,12 +42,6 @@ DEFAULT_USER=`whoami`
 # p9k node_version segment settings
 POWERLEVEL9K_NODE_VERSION_FOREGROUND="black"
 
-# Customizations for zsh-autosuggestions plugin
-# https://github.com/zsh-users/zsh-autosuggestions#configuration
-ZSH_AUTOSUGGEST_STRATEGY="history"
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-ZSH_AUTOSUGGEST_USE_ASYNC=1
-
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
