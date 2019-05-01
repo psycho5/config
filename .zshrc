@@ -3,10 +3,12 @@
 # Predominantly rely on oh-my-zsh framework (https://github.com/robbyrussell/oh-my-zsh).
 
 # PATH variables
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$(yarn global bin):~/.local/bin:$PATH
+export PATH=$HOME/bin:$JAVA_HOME/bin:/usr/local/bin:/usr/local/sbin:$(yarn global bin):~/.local/bin:~/Projects//flutter/bin:$HOME/.pub-cache/bin:$PATH
 
 # Other variables
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home"
+# export java="/Library/Java/JavaVirtualMachines/jdk-12.0.1.jdk/Contents/Home"
+# export JAVA_HOME="/usr/libexec/java_home"
+export JAVA_HOME=$(/usr/libexec/java_home)
 export MYSQL_HOME="/usr/local/mysql"
 export COMPOSER_HOME="~/.composer/vendor"
 export GRADLE_HOME="/usr/local/bin/gradle"
