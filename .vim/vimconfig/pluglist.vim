@@ -31,6 +31,7 @@ Plugin 'w0rp/ale' "Asynchronous lint engine (Can use eslint, prettier, etc. as l
 Plugin 'tpope/vim-abolish' "Search for, substitute, and abbreviate multiple variants of a word
 Plugin 'dart-lang/dart-vim-plugin' "Syntax highlighting for Dart in Vim
 Plugin 'natebosch/vim-lsc' "Helps vim communicating with a language server
+Plugin 'sheerun/vim-polyglot' "One to rule them all, one to find them, one to bring them all and in the darkness bind them
 
 " end plugin definition
 call vundle#end()            " required for vundle
