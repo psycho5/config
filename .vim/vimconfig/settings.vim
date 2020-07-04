@@ -31,7 +31,7 @@ set smarttab     " insert tabs on the start of a line according to shiftwidth, n
 
 set ruler        " show the cursor position all the time
 set showcmd      " show current command in bottom line
-set dictionary+=/usr/share/dict/words 
+set dictionary+=/usr/share/dict/words
                     " use system dictionary for auto-completion of english words
 "set noshowmode   "gets rid of --INSERT--
 
@@ -90,6 +90,8 @@ let NERDTreeShowHidden=1
 
 ".vimrc
 map <c-f> :call JsBeautify()<cr>
+" :cp Copies the name of the file open in the current buffer
+noremap cp :let @" = expand("%")<cr>
 "" or
 autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 " for json

@@ -3,12 +3,12 @@
 # Predominantly rely on oh-my-zsh framework (https://github.com/robbyrussell/oh-my-zsh).
 
 # PATH variables
-export PATH=$HOME/bin:$JAVA_HOME/bin:/usr/local/bin:/usr/local/sbin:$(yarn global bin):~/.local/bin:~/Projects//flutter/bin:$HOME/.pub-cache/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$(yarn global bin):~/.local/bin:~/Projects//flutter/bin:$HOME/.pub-cache/bin:$PATH
 
 # Other variables
 # export java="/Library/Java/JavaVirtualMachines/jdk-12.0.1.jdk/Contents/Home"
 # export JAVA_HOME="/usr/libexec/java_home"
-export JAVA_HOME=$(/usr/libexec/java_home)
+# export JAVA_HOME=$(/usr/libexec/java_home)
 export MYSQL_HOME="/usr/local/mysql"
 export COMPOSER_HOME="~/.composer/vendor"
 export GRADLE_HOME="/usr/local/bin/gradle"
@@ -27,6 +27,11 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # powerlevel9k theme customizations
 # https://github.com/bhilburn/powerlevel9k#prompt-customization
 POWERLEVEL9K_MODE='nerdfont-complete'
+
+# To get virtualenvwrapper to create a virtual environment using pyvenv instead of virtualenv,
+PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
 
 # p9k segments display settings
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user context dir vcs dir_writable)

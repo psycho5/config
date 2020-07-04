@@ -14,3 +14,5 @@ let g:ale_completion_enabled = 1
 
 " Plugin: pangloss/vim-javascript
 let g:javascript_plugin_jsdoc = 1
+
+let g:pymode_python = 'python'
