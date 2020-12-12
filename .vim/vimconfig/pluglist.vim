@@ -6,31 +6,52 @@
 let &runtimepath.=',$HOME/.vim/bundle/Vundle.vim'
 call vundle#begin()
 
-
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-"start plugin defintion
-"
+" start plugin defintion
+
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'scrooloose/nerdtree' "explore your filesystem and to open files and directories.
-Plugin 'Xuyuanp/nerdtree-git-plugin' "Show git status of files and containing directories within NerdTree.
+" explore your filesystem and to open files and directories.
+Plugin 'scrooloose/nerdtree'
+" Show git status of files and containing directories within NerdTree.
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-scripts/L9'
 Plugin 'vim-scripts/FuzzyFinder'
-Plugin 'itchyny/lightline.vim' "configurable statusline/tabline plugin.
-Plugin 'tpope/vim-surround' "surroundings: parentheses, brackets, quotes, XML tags, and more.
-" Plugin 'groenewege/vim-less'     "syntax highlighting, indenting and autocompletion for the dynamic stylesheet language LESS. Depreciated use.
-" Plugin 'maksimr/vim-jsbeautify' "Depreciated use
-Plugin 'editorconfig/editorconfig-vim' "Ability to parse .editorconfig file.
-Plugin 'tpope/vim-fugitive' "Git plugin.
-Plugin 'klen/python-mode' "Host of python programming plugins.
-" Plugin 'pangloss/vim-javascript' "JavaScript syntax highlight and indent support.
-Plugin 'mxw/vim-jsx' "Syntax highlight for JSX
-" Plugin 'ambv/black' "Python code formatter
-Plugin 'w0rp/ale' "Asynchronous lint engine (Can use eslint, prettier, etc. as linters).
-Plugin 'tpope/vim-abolish' "Search for, substitute, and abbreviate multiple variants of a word
-Plugin 'dart-lang/dart-vim-plugin' "Syntax highlighting for Dart in Vim
-Plugin 'natebosch/vim-lsc' "Helps vim communicating with a language server
+" configurable statusline/tabline plugin.
+Plugin 'itchyny/lightline.vim'
+" surroundings: parentheses, brackets, quotes, XML tags, and more.
+Plugin 'tpope/vim-surround'
+" syntax highlighting, indenting and autocompletion for the dynamic stylesheet language LESS. Depreciated use.
+" Plugin 'groenewege/vim-less'
+" Depreciated use
+" Plugin 'maksimr/vim-jsbeautify'
+" Ability to parse .editorconfig file.
+Plugin 'editorconfig/editorconfig-vim'
+"Git plugin.
+Plugin 'tpope/vim-fugitive'
+"Host of python programming plugins.
+Plugin 'klen/python-mode'
+" JavaScript syntax highlight and indent support.
+" Plugin 'pangloss/vim-javascript'
+" Syntax highlight for JSX
+Plugin 'mxw/vim-jsx'
+" Python code formatter
+" Plugin 'ambv/black'
+" Asynchronous lint engine (Can use eslint, prettier, etc. as linters).
+Plugin 'dense-analysis/ale'
+" Search for, substitute, and abbreviate multiple variants of a word
+Plugin 'tpope/vim-abolish'
+" Syntax highlighting for Dart in Vim
+Plugin 'dart-lang/dart-vim-plugin'
+" Helps vim communicating with a language server
+Plugin 'natebosch/vim-lsc'
+" Fuzzy file, buffer, mru, tag, etc finder
+Plugin 'ctrlpvim/ctrlp.vim'
+" Windows PowerShell support
+Plugin 'PProvost/vim-ps1'
+" Syntax highlighting and autocompletion for HC Terraform files
+Plugin 'hashivim/vim-terraform'
 
 " end plugin definition
 call vundle#end()            " required for vundle

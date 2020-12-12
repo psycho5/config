@@ -31,7 +31,7 @@ set smarttab     " insert tabs on the start of a line according to shiftwidth, n
 
 set ruler        " show the cursor position all the time
 set showcmd      " show current command in bottom line
-set dictionary+=/usr/share/dict/words 
+set dictionary+=/usr/share/dict/words
                     " use system dictionary for auto-completion of english words
 "set noshowmode   "gets rid of --INSERT--
 
@@ -72,8 +72,14 @@ set incsearch
 set lazyredraw
 " On file types...
 " .md files are markdown files
-autocmd BufNewFile,BufRead *.md setlocal ft=markdown
-autocmd BufRead,BufNewFile *.vue setlocal filetype=html.javascript.css " .vue files
+autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+" .vue files contain a mix of html, css, js
+autocmd BufRead,BufNewFile *.vue setlocal filetype=html.javascript.css
+" Jenkinsfile are groovy files
+autocmd BufNewFile,BufRead Jenkinsfile setlocal filetype=groovy
+" sh are shell files
+autocmd BufNewFile,BufRead *.sh setlocal filetype=sh
+
 
 " start NERDTree on start-up and focus active window
 autocmd VimEnter * NERDTree
