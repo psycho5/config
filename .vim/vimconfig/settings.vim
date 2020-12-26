@@ -66,6 +66,8 @@ set viminfo='100,f1
 set ignorecase
 set smartcase
 set incsearch
+" Highlight search results
+set hlsearch
 
 " screen will not be redrawn while running macros, registers or other
 " non-typed comments
