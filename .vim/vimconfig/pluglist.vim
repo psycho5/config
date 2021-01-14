@@ -30,14 +30,12 @@ Plugin 'tpope/vim-surround'
 Plugin 'editorconfig/editorconfig-vim'
 "Git plugin.
 Plugin 'tpope/vim-fugitive'
-"Host of python programming plugins.
-Plugin 'klen/python-mode'
+"Host of Python programming plugins.
+Plugin 'python-mode/python-mode'
 " JavaScript syntax highlight and indent support.
 " Plugin 'pangloss/vim-javascript'
 " Syntax highlight for JSX
 Plugin 'mxw/vim-jsx'
-" Python code formatter
-" Plugin 'ambv/black'
 " Asynchronous lint engine (Can use eslint, prettier, etc. as linters).
 Plugin 'dense-analysis/ale'
 " Search for, substitute, and abbreviate multiple variants of a word
