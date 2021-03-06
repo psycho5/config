@@ -1,20 +1,23 @@
 # Author: Sagar Baver (https://github.com/sagarbaver).
-# My configurations of the Z-shell.
-# Predominantly rely on oh-my-zsh framework (https://github.com/robbyrussell/oh-my-zsh).
+# My Z-shell configuration
+# Predominantly relies on oh-my-zsh framework (https://github.com/robbyrussell/oh-my-zsh).
 
 # PATH variables
-export PATH=$HOME/bin:$JAVA_HOME/bin:/usr/local/bin:/usr/local/sbin:$(yarn global bin):~/.local/bin:~/Projects//flutter/bin:$HOME/.pub-cache/bin:$PATH
+export PATH=/usr/local/bin:$HOME/bin:/usr/local/sbin:~/.local/bin:$HOME/.pub-cache/bin:/Applications:$PATH
 
-# Other variables
-# export java="/Library/Java/JavaVirtualMachines/jdk-12.0.1.jdk/Contents/Home"
-# export JAVA_HOME="/usr/libexec/java_home"
-export JAVA_HOME=$(/usr/libexec/java_home)
+# Java
+export JAVA_HOME_11=$(/usr/libexec/java_home -v11)
+export JAVA_HOME_15=$(/usr/libexec/java_home -v15)
+
+# Java 11
+export JAVA_HOME=$JAVA_HOME_11
+
 export MYSQL_HOME="/usr/local/mysql"
 export COMPOSER_HOME="~/.composer/vendor"
 export GRADLE_HOME="/usr/local/bin/gradle"
 
 # AWS environment variables
-export AWS_SDK_LOAD_CONFIG=1
+export AWS_SDK_LOAD_CONFIG=true
 
 # Path to oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -29,8 +32,8 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE='nerdfont-complete'
 
 # p9k segments display settings
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user context dir vcs dir_writable)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time root_indicator node_version background_jobs ram disk_usage)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv user context dir vcs dir_writable)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(pyenv status command_execution_time root_indicator java_version node_version background_jobs ram disk_usage)
 
 # p9k prompt display settings
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -140,7 +143,7 @@ source $ALIASFILE
 
 # Runs cowsay and fortune formulae on terminal startup
 # fortune | cowsay
-# eval $(thefuck --alias)
+eval $(thefuck --alias)
 
 # NVM(Node Version Manager) config
 # https://github.com/creationix/nvm#git-install
@@ -159,7 +162,20 @@ export NVM_DIR="$HOME/.nvm"
 # PURE_CMD_MAX_EXEC_TIME=7
 
 # prompt pure
-source "$HOME/.zshrc-`uname`"
+# source "$HOME/.zshrc-`uname`"
+
+# Initialize pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+# ADSK - vault-utils
+# https://git.autodesk.com/huangjoh/vault-utils
+source ~/Work/Autodesk/vault-utils/.alias-vault.bash
+
+function unaws(){
+    unset AWS_DEFAULT_REGION AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_ACCESS_KEY_ID TF_VAR_aws_access_main TF_VAR_aws_secret_main
+}
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
