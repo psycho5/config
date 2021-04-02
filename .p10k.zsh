@@ -1,0 +1,1 @@
+/Users/sagarbaver/Projects/dotfiles/.p10k.zsh
