@@ -1,3 +1,7 @@
+# Author: Sagar Baver (https://github.com/sagarbaver).
+# My Z-shell configuration
+# Predominantly relies on oh-my-zsh framework (https://github.com/robbyrussell/oh-my-zsh).
+#
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -5,12 +9,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Author: Sagar Baver (https://github.com/sagarbaver).
-# My Z-shell configuration
-# Predominantly relies on oh-my-zsh framework (https://github.com/robbyrussell/oh-my-zsh).
-
 # PATH variables
-export PATH=/usr/local/bin:$HOME/bin:/usr/local/sbin:~/.local/bin:$HOME/.pub-cache/bin:/Applications:$PATH
+export PATH=/usr/local/bin:$HOME/bin:/usr/local/sbin:~/.local/bin:$HOME/.pub-cache/bin:$PATH
+# Add Visual Studio Code (code)
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # Java
 export JAVA_HOME_11=$(/usr/libexec/java_home -v11)
@@ -22,6 +24,7 @@ export JAVA_HOME=$JAVA_HOME_11
 export MYSQL_HOME="/usr/local/mysql"
 export COMPOSER_HOME="~/.composer/vendor"
 export GRADLE_HOME="/usr/local/bin/gradle"
+export GROOVY_HOME="/usr/local/opt/groovy/libexec"
 
 # AWS environment variables
 export AWS_SDK_LOAD_CONFIG=true
